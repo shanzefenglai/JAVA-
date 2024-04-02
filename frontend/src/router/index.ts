@@ -1,8 +1,4 @@
 import { createRouter, createMemoryHistory } from 'vue-router'
-import Home from '../components/Home.vue'
-import LatestList from '../components/LatestList.vue'
-import BestList from '../components/BestList.vue'
-import Search from '../components/Search.vue'
 
 const routes = [
     {
@@ -11,7 +7,7 @@ const routes = [
     },
     {
         path: '/home', 
-        component: Home,
+        component: () => import('../components/Home.vue'),
         name: 'home'
     },
     {
@@ -21,12 +17,12 @@ const routes = [
         children: [
             {
                 path: '/list/latest',
-                component: LatestList,
+                component: () => import('../components/LatestList.vue'),
                 name: 'latestList'
             },
             {
                 path: '/list/best',
-                component: BestList,
+                component: () => import('../components/BestList.vue'),
                 name: 'bestList'
             }
         ]
@@ -34,7 +30,7 @@ const routes = [
     {
         path: '/search',
         name: 'search',
-        component: Search
+        component: () => import('../components/Search.vue')
     }
 ]
 
